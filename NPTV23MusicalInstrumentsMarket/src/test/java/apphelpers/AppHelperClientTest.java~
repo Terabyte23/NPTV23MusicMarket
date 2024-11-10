@@ -1,0 +1,4 @@
+package apphelpers;
+
+public class AppHelperClientTest {
+}

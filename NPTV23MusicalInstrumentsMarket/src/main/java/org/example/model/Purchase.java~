@@ -1,0 +1,77 @@
+package org.example.model;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Objects;
+import java.util.UUID;
+
+public class Purchase implements Serializable {
+    private UUID id;
+    private Client client;
+    private MusicalInstrument musicalInstrument;
+    private LocalDate purchaseDate;
+
+    public Purchase() {
+        this.id = UUID.randomUUID();
+    }
+
+    public Purchase(Client client, MusicalInstrument sportEquipment, LocalDate purchaseDate) {
+        this.id = UUID.randomUUID();
+        this.client = client;
+        this.musicalInstrument = sportEquipment;
+        this.purchaseDate = purchaseDate;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public MusicalInstrument getMusicalInstrument() {
+        return musicalInstrument;
+    }
+
+    public void setSportEquipment(MusicalInstrument musicalInstrument) {
+        this.musicalInstrument = musicalInstrument;
+    }
+
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(LocalDate purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Purchase purchase = (Purchase) o;
+        return Objects.equals(id, purchase.id) && Objects.equals(client, purchase.client) && Objects.equals(musicalInstrument, purchase.musicalInstrument) && Objects.equals(purchaseDate, purchase.purchaseDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, client, musicalInstrument, purchaseDate);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Покупка: %s, Товар: %s, Дата: %s",
+                client.getFirstname() + " " + client.getLastname(),
+                musicalInstrument.getName(),
+                purchaseDate);
+    }
+}
